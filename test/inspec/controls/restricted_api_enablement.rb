@@ -21,8 +21,14 @@ control 'restricted-api-blocked' do
     its('list_policy.denied_values') { should include restricted_api }
   end
 
-  describe google_project_service(project: project_no_prefix, name: restricted_api) do
-    it { should exist }
-    its('state') { should cmp 'DISABLED' }
+  describe.one do
+    describe google_project_service(project: project_no_prefix, name: restricted_api) do
+      it { should exist }
+      its('state') { should cmp 'DISABLED' }
+    end
+
+    describe google_project_service(project: project_no_prefix, name: restricted_api) do
+      it { should_not exist }
+    end
   end
 end
