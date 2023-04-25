@@ -15,10 +15,9 @@ locals {
 }
 
 resource "google_project" "this" {
-  folder_id       = var.folder_id
-  name            = local.project
-  project_id      = local.project
-  billing_account = var.billing_account
+  folder_id  = var.folder_id
+  name       = local.project
+  project_id = local.project
 }
 
 resource "google_project_service" "org_policy_api" {

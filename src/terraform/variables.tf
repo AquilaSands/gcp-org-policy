@@ -17,8 +17,3 @@ variable "service_account" {
   description = "The servive account to impersonate. Your account must have access to the service account and be granted roles/iam.serviceAccountOpenIdTokenCreator"
   type        = string
 }
-
-variable "billing_account" {
-  description = "The billing account id."
-  type        = string
-}
